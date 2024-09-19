@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- section 1 --------------------------------------------------------------------------------------------------- -->
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharma Capsules</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Noto Serif Display, Cera Pro DEMO;
+      color: #333;
+      /* padding: 20px; */
+    }
+
+    .pharma-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pharma-title-section {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .pharma-title-section h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .pharma-title-section p {
+      font-size: 16px;
+      color: #777;
+    }
+
+    .pharma-content-wrapper {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pharma-image-section {
+      flex: 1;
+      padding-right: 50px;
+    }
+
+    .pharma-image-section img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .pharma-content-section {
+      flex: 1;
+    }
+
+    .pharma-benefits {
+      list-style-type: none;
+      position: relative;
+    }
+
+    .pharma-benefits li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      padding-left: 30px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .pharma-benefits li::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background-color: #ddd; /* Default color */
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: background-color 0.3s ease; /* Animation for color transition */
+    }
+
+    .pharma-benefits li.active::before {
+      background-color: #333; /* Black when active */
+    }
+
+    .pharma-benefits h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .pharma-benefits p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* Line between the dots */
+    .pharma-benefits::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 10px;
+      width: 2px;
+      height: 100%;
+      background-color: #ddd;
+    }
+
+    .pharma-benefits li:last-child::after {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .pharma-content-wrapper {
+        flex-direction: column;
+      }
+
+      .pharma-image-section {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+      .pharma-content-section {  
+      flex: 1;
+      position: relative;
+    } 
+    .pharma-benefits li {
+      display: none; /* Hide all by default for mobile */
+      align-items: flex-start;
+      margin-bottom: 40px;
+      padding-left: 30px;
+      position: relative;
+    }
+    .pharma-benefits li.active {
+      display: flex; /* Show the active one */
+    }
+    .pharma-content-wrapper {
+        flex-direction: column;
+      }
+
+      .pharma-image-section {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+
+      .pharma-content-section {
+        width: 100%;
+        order: -1; /* Ensure content is positioned above the image */
+        margin-bottom: 20px;
+      }
+
+      .pharma-progress-bar-container {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .pharma-progress-bar {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+      }
+
+      .pharma-progress-bar-dot {
+        width: 10px;
+        height: 10px;
+        background-color: #ddd;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+      }
+
+      .pharma-progress-bar-dot.active {
+        background-color: #333;
+      }
+
+      .pharma-progress-bar-line {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        width: calc(100% - 10px);
+        height: 2px;
+        background-color: #ddd;
+        transform: translateY(-50%);
+        z-index: 0;
+      }
+
+      .pharma-slider {
+        overflow-x: auto;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+      }
+
+      .pharma-slider-item {
+        display: inline-block;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      /* Hide vertical progress bar line in mobile view */
+      .pharma-benefits::before {
+        display: none;
+      }
+
+      /* Show only the active li */
+      .pharma-benefits li.active {
+        display: block;
+      }
+      .pharma-benefits li.active::before {
+    background-color: #333;
+    display: none;
+
+}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pharma-container">
+    <!-- Title Section -->
+    <div class="pharma-title-section">
+      <h1>Pharma Capsules</h1>
+      <p>A superior delivery mechanism, for the most effective result</p>
+    </div>
+
+    <div class="pharma-content-wrapper">
+      <!-- Image Section -->
+      <div class="pharma-image-section">
+        <img src="https://cdn.shopify.com/s/files/1/0697/3702/1663/files/Power-Drops-9_1_1.png?v=1726748159" alt="Pharma Capsules">
+      </div>
+
+      <!-- Content Section -->
+      <div class="pharma-content-section">
+
+
+        <div class="pharma-progress-bar-container">
+            <div class="pharma-progress-bar-line"></div>
+            <div class="pharma-progress-bar">
+              <div class="pharma-progress-bar-dot active" onclick="showContent(0)"></div>
+              <div class="pharma-progress-bar-dot" onclick="showContent(1)"></div>
+              <div class="pharma-progress-bar-dot" onclick="showContent(2)"></div>
+            </div>
+          </div>
+        <ul class="pharma-benefits">
+          <!-- The first li is set as active by default -->
+          <li class="active" onclick="makeActive(this)">
+            <div>
+              <h2>Fast Absorption</h2>
+              <p>Harnessing the power of the purest and most potent plant actives and adaptogens to restore balance to mind, body, and skin.</p>
+            </div>
+          </li>
+          <li onclick="makeActive(this)">
+            <div>
+              <h2>Increased Bioavailability</h2>
+              <p>Cutting-edge, effective products and experiences that work. Thoughtfully designed by experts and rigorously researched and tested.</p>
+            </div>
+          </li>
+          <li onclick="makeActive(this)">
+            <div>
+              <h2>Protection of Active Ingredients</h2>
+              <p>We carefully consider every choice to create the most thoughtful, ethical, and sustainable experiences and products.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to make the clicked list item active and turn the dot black
+    function makeActive(element) {
+      // Remove the active class from all list items
+      var listItems = document.querySelectorAll('.pharma-benefits li');
+      listItems.forEach(function(item) {
+        item.classList.remove('active');
+      });
+
+      // Add the active class to the clicked item
+      element.classList.add('active');
+    }
+
+    // Initially, keep the first list item active (this can also be done in CSS)
+    document.querySelector('.pharma-benefits li').classList.add('active');
+
+
+    function showContent(index) {
+      var listItems = document.querySelectorAll('.pharma-benefits li');
+      var dots = document.querySelectorAll('.pharma-progress-bar-dot');
+
+      // Remove active class from all list items and dots
+      listItems.forEach(function(item) {
+        item.classList.remove('active');
+      });
+      dots.forEach(function(dot) {
+        dot.classList.remove('active');
+      });
+
+      // Add active class to the selected list item and dot
+      listItems[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
+
+    // Initially set the first content and progress dot as active
+    document.addEventListener('DOMContentLoaded', function() {
+      showContent(0);
+    });
+  </script>
+<!-- end section 1 --------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+<!-- section 2 ------------------------------------------------------------------------------------------------------------------------>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Science Section</title>
+  <style>
+      .body-n2 {
+      font-family: Noto Serif Display, Cera Pro DEMO;
+      color: #333;
+      padding: 20px;
+  }
+      .custom-container {
+          display: flex;
+          justify-content: space-between;
+          padding: 20px;
+          flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+      }
+
+      .custom-column {
+          width: 48%;
+      }
+
+      .custom-image-column img {
+          width: 100%;
+          height: auto;
+      }
+
+      .custom-text-column {
+          font-family: 'Arial', sans-serif;
+      }
+
+      h2 {
+          font-size: 20px;
+          margin-bottom: 20px;
+      }
+
+      .custom-accordion {
+          border-top: 1px solid #ccc;
+      }
+
+      .custom-accordion-item {
+          border-bottom: 1px solid #ccc;
+      }
+
+      .custom-accordion-header {
+          background: none;
+          border: none;
+          text-align: left;
+          width: 100%;
+          padding: 10px 0;
+          font-size: 14px;
+          font-weight: bold;
+          cursor: pointer;
+          outline: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .custom-accordion-content {
+          display: none;
+          padding: 10px 0;
+      }
+
+      .custom-accordion-content p {
+          margin: 0;
+          font-size: 14px;
+      }
+
+      .custom-accordion-header .custom-toggle-sign {
+          font-size: 16px;
+          font-weight: bold;
+      }
+
+      /* Mobile view: stack the columns vertically */
+      @media (max-width: 768px) {
+          .custom-container {
+              flex-direction: column; /* Stack columns vertically */
+          }
+
+          .custom-column {
+              width: 100%; /* Full width for both columns */
+              margin-bottom: 20px; /* Add space between sections */
+          }
+      }
+  </style>
+</head>
+<div class="body-n2">
+  <div class="custom-container">
+      <!-- Left Column for Image -->
+      <div class="custom-column custom-image-column">
+          <img src="https://cdn.shopify.com/s/files/1/0697/3702/1663/files/image_5_1.png?v=1726746732" alt="Product Image">
+      </div>
+
+      <!-- Right Column for Accordion Content -->
+      <div class="custom-column custom-text-column">
+          <h2>The Science</h2>
+          <h3>Regulates hormones & thyroid function</h3>
+          <p>Vitamin B6 (pyridoxine) helps the body produce serotonin, a neurotransmitter involved in regulating mood, appetite, and sleep. As women age serotonin levels drop which can cause hormone inbalances and consequential mood swings.<br></br>   Dong Quai Root, often referred to as "female ginseng," helps balance estrogen levels. Rich in gamma-linolenic acid (GLA), Evening Primrose Oil also helps to regulate hormones. Both plant extracts are commonly used to to alleviate symptoms assosciated with menopause, including hot flashes and mood swings.<br></br>Iodine is required by the body to make essential thyroid hormones that  help regulate weight and cell metabolism.<br></br></p>
+          <div class="custom-accordion">
+              <div class="custom-accordion-item">
+                  <button class="custom-accordion-header" onclick="toggleCustomAccordion(this)">
+                      <span>REGULATES HORMONES & THYROID FUNCTION</span>
+                      <span class="custom-toggle-sign">+</span>
+                  </button>
+                  <div class="custom-accordion-content">
+                      <p>Vitamin B6 (pyridoxine) helps the body produce serotonin, a neurotransmitter involved in regulating mood, appetite, and sleep. As women age serotonin levels drop which can cause hormone imbalances and consequential mood swings...</p>
+                  </div>
+              </div>
+
+              <div class="custom-accordion-item">
+                  <button class="custom-accordion-header" onclick="toggleCustomAccordion(this)">
+                      <span>SUPPORTS BONE & CARDIOVASCULAR HEALTH</span>
+                      <span class="custom-toggle-sign">+</span>
+                  </button>
+                  <div class="custom-accordion-content">
+                      <p>Supports bone and cardiovascular health...</p>
+                  </div>
+              </div>
+
+              <div class="custom-accordion-item">
+                  <button class="custom-accordion-header" onclick="toggleCustomAccordion(this)">
+                      <span>REDUCES TIREDNESS & FATIGUE</span>
+                      <span class="custom-toggle-sign">+</span>
+                  </button>
+                  <div class="custom-accordion-content">
+                      <p>Reduces tiredness and fatigue...</p>
+                  </div>
+              </div>
+
+              <div class="custom-accordion-item">
+                  <button class="custom-accordion-header" onclick="toggleCustomAccordion(this)">
+                      <span>SUPPORTS BRAIN HEALTH</span>
+                      <span class="custom-toggle-sign">+</span>
+                  </button>
+                  <div class="custom-accordion-content">
+                      <p>Supports brain health...</p>
+                  </div>
+              </div>
+
+              <div class="custom-accordion-item">
+                  <button class="custom-accordion-header" onclick="toggleCustomAccordion(this)">
+                      <span>SUPPORTS SKIN & HAIR HEALTH</span>
+                      <span class="custom-toggle-sign">+</span>
+                  </button>
+                  <div class="custom-accordion-content">
+                      <p>Supports skin and hair health...</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script>
+      function toggleCustomAccordion(button) {
+          let content = button.nextElementSibling;
+          let toggleSign = button.querySelector(".custom-toggle-sign");
+
+          if (content.style.display === "block") {
+              content.style.display = "none";
+              toggleSign.textContent = "+";
+          } else {
+              content.style.display = "block";
+              toggleSign.textContent = "−";
+          }
+      }
+  </script>
+  </div>
+
+<br><br></br>
+<!-- end section 2 --------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+<!-- section 3 --------------------------------------------------------------------------------------------------- -->
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  .h-new {
+    font-family: Noto Serif Display, Cera Pro DEMO;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #F9F9F9;
+    ;
+  }
+  .heading-custom {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+    width: 25%;
+    text-align: center;
+  }
+  .carousel-container-custom {
+    width: 75%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+  }
+  .carousel-wrapper-custom {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+  .carousel-custom {
+    display: flex;
+    transition: transform 0.3s ease;
+    gap: 20px; /* Adjusted gap for better spacing */
+    width: max-content;
+  }
+  .carousel-item-custom {
+    text-align: center;
+    width: 300px; /* Increased width for larger images */
+  }
+  .carousel-custom img {
+    width: 75%; /* Make images responsive to the container */
+    height: auto;
+    border-radius: 10px; /* Optional: rounded corners for images */
+  }
+  .carousel-heading-custom {
+    font-size: 20px; /* Increased font size */
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .carousel-description-custom {
+    font-size: 16px; /* Increased font size */
+    color: gray;
+    margin-top: 5px;
+  }
+  .progress-bar-custom {
+    height: 5px;
+    background-color: lightgray;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  .progress-bar-inner-custom {
+    height: 100%;
+    width: 0;
+    background-color: black;
+    transition: width 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    .h-new {
+      flex-direction: column;
+    }
+    .carousel-item-custom {
+      text-align: center;
+      width: 150px;
+    }
+    .carousel-custom img {
+      width: 90%;
+    }
+    .carousel-container-custom {
+      width: 100%;
+    }
+    .carousel-heading-custom {
+      font-size: 14px; /* Adjusted font size */
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .carousel-description-custom {
+      font-size: 12px; /* Adjusted font size */
+      color: gray;
+      margin-top: 5px;
+    }
+  }
+</style>
+</head>
+<!-- <body id="body1"> -->
+  <div class="h-new">
+<div class="heading-custom">
+  <h1>Powerful Ingredients</h1>
+</div>
+
+<div class="carousel-container-custom">
+  <div class="carousel-wrapper-custom">
+    <div class="carousel-custom">
+      <!-- First Set of Items -->
+      <div class="carousel-item-custom">
+        <img src="https://cdn.shopify.com/s/files/1/0697/3702/1663/files/transparent-bubbles-purple-background.png?v=1726678064" alt="Image 1">
+        <div class="carousel-heading-custom">Dong Quai Root</div>
+        <div class="carousel-description-custom">Regulates mood.</div>
+      </div>
+      <div class="carousel-item-custom">
+        <img src="https://cdn.shopify.com/s/files/1/0697/3702/1663/files/golden-sesame_2.png?v=1726678064" alt="Image 2">
+        <div class="carousel-heading-custom">Korean Ginseng</div>
+        <div class="carousel-description-custom">Enhances energy & boosts immunity.</div>
+      </div>
+      <div class="carousel-item-custom">
+        <img src="https://cdn.shopify.com/s/files/1/0697/3702/1663/files/view-mono-color-mushrooms_1.png?v=1726678064" alt="Image 3">
+        <div class="carousel-heading-custom">Vitamin D</div>
+        <div class="carousel-description-custom">Promotes bone health.</div>
+      </div>
+      <!-- Repeated Set of Items -->
+      <div class="carousel-item-custom">
+        <img src="https://cdn.shopify.com/s/files/1/0697/3702/1663/files/transparent-bubbles-purple-background.png?v=1726678064" alt="Image 1">
+        <div class="carousel-heading-custom">Dong Quai Root</div>
+        <div class="carousel-description-custom">Regulates mood.</div>
+      </div>
+      <div class="carousel-item-custom">
+        <img src="https://cdn.shopify.com/s/files/1/0697/3702/1663/files/golden-sesame_2.png?v=1726678064" alt="Image 2">
+        <div class="carousel-heading-custom">Korean Ginseng</div>
+        <div class="carousel-description-custom">Enhances energy & boosts immunity.</div>
+      </div>
+      <div class="carousel-item-custom">
+        <img src="https://cdn.shopify.com/s/files/1/0697/3702/1663/files/view-mono-color-mushrooms_1.png?v=1726678064" alt="Image 3">
+        <div class="carousel-heading-custom">Vitamin D</div>
+        <div class="carousel-description-custom">Promotes bone health.</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar-custom">
+    <div class="progress-bar-inner-custom"></div>
+  </div>
+</div>
+
+<script>
+  const carousel = document.querySelector('.carousel-custom');
+  const carouselWrapper = document.querySelector('.carousel-wrapper-custom');
+  const progressBarInner = document.querySelector('.progress-bar-inner-custom');
+
+  let currentIndex = 0;
+  let slidesToShow = 3; // Default for desktop
+  const totalImages = document.querySelectorAll('.carousel-item-custom').length;
+  let startX = 0;
+  let endX = 0;
+  let isSwiping = false;
+
+  function updateCarousel() {
+    const viewportWidth = window.innerWidth;
+    slidesToShow = viewportWidth > 768 ? 3 : 1; // 3 on desktop, 1 on mobile (full-width)
+    const imageWidth = document.querySelector('.carousel-item-custom').offsetWidth;
+    const gap = 20; // Adjust gap between images
+    const visibleWidth = slidesToShow * (imageWidth + gap) - gap; // Include gaps
+    const widthPercentage = (100 * visibleWidth) / carousel.scrollWidth;
+
+    // Adjust transform to move by one item
+    const translateXPercentage = (currentIndex * (imageWidth + gap)) / carousel.scrollWidth * 100;
+    carousel.style.transform = `translateX(-${translateXPercentage}%)`;
+
+    const progressWidth = ((currentIndex + slidesToShow) / totalImages) * 100;
+    progressBarInner.style.width = `${progressWidth}%`;
+  }
+
+  function handleSwipe() {
+    const viewportWidth = window.innerWidth;
+    slidesToShow = viewportWidth > 768 ? 3 : 1;
+    const imageWidth = document.querySelector('.carousel-item-custom').offsetWidth;
+    const gap = 20;
+    const visibleWidth = slidesToShow * (imageWidth + gap) - gap;
+    const widthPercentage = (100 * visibleWidth) / carousel.scrollWidth;
+
+    if (endX - startX < -50) { // Swipe left
+      currentIndex++;
+      if (currentIndex > totalImages - slidesToShow) {
+        currentIndex = 0;
+      }
+    } else if (endX - startX > 50) { // Swipe right
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = totalImages - slidesToShow;
+      }
+    }
+    updateCarousel();
+  }
+
+  // Autoplay functionality to slide one item at a time
+  function autoPlay() {
+    currentIndex++;
+    if (currentIndex >= totalImages) {
+      currentIndex = 0;
+    }
+    updateCarousel();
+  }
+
+  // Set interval for autoplay (5 seconds)
+  setInterval(autoPlay, 5000);
+
+  carouselWrapper.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+  });
+
+  carouselWrapper.addEventListener('touchend', (e) => {
+    endX = e.changedTouches[0].clientX;
+    if (isSwiping) {
+      handleSwipe();
+      isSwiping = false;
+    }
+  });
+
+  window.addEventListener('resize', updateCarousel);
+  updateCarousel();
+</script>
+</div>
+<br>
+<br></br>
+<br><br></br>
+<!-- end section 3 --------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- section 4 --------------------------------------------------------------------------------------------------- -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Section</title>
+  <style>
+      /* Container for review section */
+      .review-section {
+          position: relative;
+          background-image: url('https://cdn.shopify.com/s/files/1/0697/3702/1663/files/Capsule_shadow_hold_meno_1.png?v=1726746083'); /* Add your background image here */
+          background-size: cover;
+          background-position: center;
+          height: 200px; /* Adjust as needed */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      @media (max-width: 500px) {
+      .review-section {
+        
+          background-image: url('https://cdn.shopify.com/s/files/1/0697/3702/1663/files/Group_99166717.png?v=1726745757'); /* Add your background image here */
+      }
+
+      .review-overlay {
+          
+          padding: 8px !important;
+         
+      }
+  }
+
+
+      /* Overlay */
+      .review-overlay {
+          background-color: rgba(255, 255, 255, 0.8); /* White with transparency */
+          padding: 20px;
+          text-align: center;
+          width: 80%; /* Adjust the width if necessary */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Review stars */
+      .review-stars {
+          font-size: 20px;
+          color: black;
+      }
+
+      /* Review text */
+      .review-text {
+          font-size: 16px;
+          font-style: italic;
+          margin: 10px 0;
+      }
+
+      /* Review author */
+      .review-author {
+          font-size: 18px;
+          font-weight: bold;
+          margin-top: 10px;
+      }
+  </style>
+</head>
+
+
+  <div class="review-section">
+      <div class="review-overlay">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"One pipette of this one delivers the right amount of pure CBD for the job and I can attest to its brilliance."</p>
+          <div class="review-author">VOGUE</div>
+      </div>
+  </div>
+
+</body>
+</html>
+
+<br><br></br><br><br></br>
+<!-- end section 4--------------------------------------------------------------------------------------------------- -->
